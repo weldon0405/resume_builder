@@ -1,0 +1,178 @@
+services:
+  # Development Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: deps
+    profiles: [ "dev" ]
+    command: npm run dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "http://localhost:3000" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  # Production Frontend Service
+  frontend-prod:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: runner
+    profiles: [ "prod" ]
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD", "wget", "--spider", "http://localhost:3000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    depends_on:
+      backend-prod:
+        condition: service_healthy
+
+  # Development Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    profiles: [ "dev" ]
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./backend:/app
+      - go-cache:/go/pkg/mod
+    environment:
+      - GO_ENV=development
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # Production Backend Service
+  backend-prod:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    profiles: [ "prod" ]
+    ports:
+      - "8080:8080"
+    environment:
+      - GO_ENV=production
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/api/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # PostgreSQL Database Service
+  postgres:
+    image: postgres:16.4-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=apexio
+      - POSTGRES_PASSWORD=apexio_password
+      - POSTGRES_DB=apexio
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U apexio" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  # Redis Cache Service
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - apexio-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+# Named volumes for persistent data
+volumes:
+  postgres-data:
+  redis-data:
+  go-cache:
+
+    # Network configuration
+networks:
+  apexio-network:
+    name: apexio-network
+    driver: bridge
