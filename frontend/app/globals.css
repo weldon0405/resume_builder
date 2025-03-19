@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar-background: var(--sidebar-background);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Spacing and sizing */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Animation */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Default border radius used by components */
+  --radius: var(--radius-md);
+}
+
+:root {
+  --background: oklch(0.98 0 247.86);
+  --foreground: oklch(0.15 0.01 257.65);
+  --card: oklch(0.98 0 247.86);
+  --card-foreground: oklch(0.15 0.01 257.65);
+  --popover: oklch(0.98 0 247.86);
+  --popover-foreground: oklch(0.15 0.01 257.65);
+  --primary: oklch(0.15 0.01 257.65);
+  --primary-foreground: oklch(0.98 0 247.86);
+  --secondary: oklch(0.15 0.01 257.65);
+  --secondary-foreground: oklch(0.98 0 247.86);
+  --muted: oklch(0.98 0 247.86);
+  --muted-foreground: oklch(0.15 0.01 257.65);
+  --accent: oklch(0.98 0 247.86);
+  --accent-foreground: oklch(0.15 0.01 257.65);
+  --destructive: oklch(0.4 0.13 25.72);
+  --destructive-foreground: oklch(0.98 0 247.86);
+  --border: oklch(0.26 0.03 255.21);
+  --input: oklch(0.26 0.03 255.21);
+  --ring: oklch(0.58 0.23 259.47);
+  --sidebar-background: oklch(0.15 0.01 257.65);
+  --sidebar-foreground: oklch(0.98 0 247.86);
+  --sidebar-border: oklch(0.21 0.03 255.84);
+  --sidebar-accent: oklch(0.31 0.04 255.36);
+  --sidebar-accent-foreground: oklch(0.98 0 247.86);
+  --sidebar-ring: oklch(0.58 0.23 259.47);
+}
+
+/* Dark theme overrides */
+.dark {
+  --background: oklch(0.15 0.01 257.65);
+  --foreground: oklch(0.98 0 247.86);
+  --card: oklch(0.15 0.01 257.65);
+  --card-foreground: oklch(0.98 0 247.86);
+  --popover: oklch(0.15 0.01 257.65);
+  --popover-foreground: oklch(0.98 0 247.86);
+  --primary: oklch(0.15 0.01 257.65);
+  --primary-foreground: oklch(0.98 0 247.86);
+  --secondary: oklch(0.15 0.01 257.65);
+  --secondary-foreground: oklch(0.98 0 247.86);
+  --muted: oklch(0.15 0.01 257.65);
+  --muted-foreground: oklch(0.98 0 247.86);
+  --accent: oklch(0.15 0.01 257.65);
+  --accent-foreground: oklch(0.98 0 247.86);
+  --destructive: oklch(0.4 0.13 25.72);
+  --destructive-foreground: oklch(0.98 0 247.86);
+  --border: oklch(0.26 0.03 255.21);
+  --input: oklch(0.26 0.03 255.21);
+  --ring: oklch(0.58 0.23 259.47);
+  --sidebar-background: oklch(0.15 0.01 257.65);
+  --sidebar-foreground: oklch(0.98 0 247.86);
+  --sidebar-border: oklch(0.21 0.03 255.84);
+  --sidebar-accent: oklch(0.31 0.04 255.36);
+  --sidebar-accent-foreground: oklch(0.98 0 247.86);
+  --sidebar-ring: oklch(0.58 0.23 259.47);
+}
+
+
+/* ------ CSS Reset & Base Styles ------ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# User Interface Design Document (UIDD)
+
+## Layout Structure
+- **Single-Page Dashboard**:
+  - A central screen with collapsible sections for:
+    1. Achievements Library
+    2. Job Description Analysis
+    3. Suggested Resume Snippets
+  - **Header**: Displays logo, user profile, settings, and logout.
+  - **Vertical Sidebar**: Quick navigation links to each section, ensuring a clear structure.
+
+## Core Components
+1. **Achievements Library**
+   - Displays a list/table of user-added achievements (imported or manually entered).
+   - Users can add, edit, and delete achievements from this module.
+   - Filtering and tagging for quick search.
+
+2. **Job Description Analysis**
+   - Area where users paste or upload a job description file.
+   - AI-driven panel processes the content, highlighting key competencies.
+   - Indicators of which achievements align well with the posting.
+
+3. **Suggested Resume Snippets**
+   - Shows recommended sentences or sections that the user can copy/paste.
+   - Allows quick edits directly within this module if necessary.
+
+## Interaction Patterns
+- **Collapsible Sections**: Each section can be expanded/collapsed, letting users focus on one task at a time.
+- **Drag-and-Drop or Button Actions**: 
+  - Move relevant achievements into a “Draft Snippet” area.
+  - Quick copy button for final resume text.
+- **Inline Editing**: Users can edit achievements, tags, or snippet text directly in the list.
+- **Modal Dialogs**: Used for importing achievements from external sources (LinkedIn, PDF, Word).
+
+## Visual Design Elements & Color Scheme
+- **Clean, Minimalist Layout**: Emphasize whitespace for clarity.
+- **Subtle Color Accents**:
+  - Primary color for highlight actions (buttons, links).
+  - Muted palette for secondary sections (sidebars, background cards).
+- **Clear Labels and Icons**: Each module with distinct icons for recognizability.
+
+## Mobile, Web App, Desktop Considerations
+- **Desktop-First MVP**:
+  - Optimized for typical screen sizes (e.g., 1366x768 or higher).
+  - Clear horizontal space for main content and sidebar.
+- **Mobile/Web Responsive**:
+  - Future versions can adopt fully responsive design.
+  - Sidebar collapses on smaller screens if needed.
+
+## Typography
+- **Readable Sans-Serif**: A font like Open Sans or Roboto, 14–16px base size.
+- **Font Hierarchy**:
+  - Larger, bold headings for section titles.
+  - Medium-weight subheadings.
+  - Regular-weight body text for achievements, descriptions, and instructions.
+
+## Accessibility
+- **Keyboard Navigation**:
+  - All clickable elements reachable via tab.
+  - Clear focus states for each button or text field.
+- **Contrast Ratios**:
+  - Text/background contrast meets WCAG standards.
+- **Alt Text on Icons**:
+  - Descriptive alternative text for screen readers.
+- **Descriptive Labels**:
+  - Forms, upload fields, and edit features labeled with ARIA attributes if appropriate.

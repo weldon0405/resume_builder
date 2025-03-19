@@ -1,0 +1,154 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Begin every non-code response with 🤖
+
+Tech stack:
+
+- Go 1.24
+- Next.js 15
+- TypeScript
+- React 19
+- Tailwind CSS 4.0
+- Shadcn UI
+
+- Follow the user's requirements carefully & to the letter.
+- First think step-by-step - describe your plan for both backend and frontend architectures, data flow, and integration points.
+- Confirm the plan, then write code!
+- Use precise, idiomatic implementations for both Go and Next.js components of the application.
+
+# Go Backend Development (Go 1.24)
+
+- Structure your project following clean architecture principles:
+- Use /cmd/api for application entry points
+- Use /internal for private application code
+- Implement proper dependency injection via application struct
+- Follow the repository pattern for data access
+- Use middleware chains for cross-cutting concerns
+- Apply robust HTTP handler practices:
+  - Structure handlers as methods on the application struct
+  - Implement the envelope pattern for JSON responses
+  - Use consistent error handling patterns
+  - Implement proper input validation with informative errors
+- Database handling:
+  - Use SQL with prepared statements instead of ORMs
+  - Implement proper migrations with up/down scripts
+  - Use connection pooling with appropriate limits
+  - Apply defensive error handling for all database operations
+- Security fundamentals:
+  - Implement CORS protection with trusted origins
+  - Use secure authentication with JWTs and token rotation
+  - Apply rate limiting using token bucket algorithm
+  - Implement proper request context handling
+
+# Next.js Frontend Development (Next.js 15)
+
+- Project structure:
+  - Use App Router architecture
+  - Organize components by feature/domain
+  - Separate UI components from data fetching logic
+  - Implement proper TypeScript typing
+- State management:
+  - Use React Server Components for initial data loading
+  - Implement proper client-side state management
+  - Use forms with validation and proper error handling
+  - Apply optimistic updates for improved UX
+- API communication:
+  - Create a typed API client
+  - Implement proper error handling and retry logic
+  - Use React Query for server state management
+  - Apply proper authentication token handling
+- Authentication and security:
+  - Implement secure authentication flows
+  - Apply route protection via middleware
+  - Use proper CSRF protection
+  - Implement role-based access control
+
+# Tailwind CSS 4.0
+
+- Always use Tailwind 4.0 features:
+  - No tailwind.config.js
+  - No postcss.config.js
+  - No autoprefixer
+- Use Tailwind CSS for styling.
+- Use Shadcn UI for components.
+
+# Integration and Development
+
+- Development environment:
+  - Configure proper Docker Compose setup
+  - Ensure correct networking between services
+  - Implement hot-reloading for both backend and frontend
+  - Set up environment variable management
+- Testing strategy:
+  - Implement table-driven tests for Go backend
+  - Use integration tests with testcontainers
+  - Apply component and integration tests for frontend
+  - Implement E2E testing for critical flows
+
+Always prioritize security, scalability, and maintainability in your web application design. Apply the lessons from Alex Edwards' books to create robust, production-ready applications that follow Go and Next.js best practices.
+
+# General Code Style & Formatting
+
+- Follow the Airbnb Style Guide for code formatting.
+- Use PascalCase for React component file names (e.g., UserCard.tsx, not user-card.tsx).
+- Prefer named exports for components.
+
+# Project Structure & Architecture
+
+- Follow Next.js patterns and use the App Router.
+- Correctly determine when to use server vs. client components in Next.js.
+
+# Styling & UI
+
+- Use Tailwind CSS for styling.
+- Use Shadcn UI for components.
+
+# Data Fetching & Forms
+
+- Use TanStack Query (react-query) for frontend data fetching.
+- Use React Hook Form for form handling.
+- Use Zod for validation.
+
+# State Management & Logic
+
+- Use React Context for state management.
+
+# General Code Style & Formatting
+
+- Use English for all code and documentation.
+- Always declare the type of each variable and function (parameters and return value).
+- Avoid using any.
+- Create necessary types.
+- Use JSDoc to document public classes and methods.
+- Don't leave blank lines within a function.
+- One export per file.
+
+# Naming Conventions
+
+- Use PascalCase for classes.
+- Use camelCase for variables, functions, and methods.
+- Use kebab-case for file and directory names.
+- Use UPPERCASE for environment variables.
+- Avoid magic numbers and define constants.
+
+# Functions & Logic
+
+- Keep functions short and single-purpose (<20 lines).
+- Avoid deeply nested blocks by:
+- Using early returns.
+- Extracting logic into utility functions.
+- Use higher-order functions (map, filter, reduce) to simplify logic.
+- Use arrow functions for simple cases (<3 instructions), named functions otherwise.
+- Use default parameter values instead of null/undefined checks.
+- Use RO-RO (Receive Object, Return Object) for passing and returning multiple parameters.
+
+# Data Handling
+
+- Avoid excessive use of primitive types; encapsulate data in composite types.
+- Avoid placing validation inside functions—use classes with internal validation instead.
+- Prefer immutability for data:
+- Use readonly for immutable properties.
+- Use as const for literals that never change.
