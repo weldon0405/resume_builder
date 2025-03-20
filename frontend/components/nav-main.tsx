@@ -34,16 +34,16 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>Resume Functions</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton
             asChild
             tooltip="Achievements"
-            className="hover:bg-teal-100 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
+            className="hover:bg-button/50 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
           >
             <a href="#achievements">
-              <Award className="text-teal-600" />
+              <Award className="text-button-foreground" />
               <span>Achievements</span>
             </a>
           </SidebarMenuButton>
@@ -52,10 +52,10 @@ export function NavMain({
           <SidebarMenuButton
             asChild
             tooltip="Job Analysis"
-            className="hover:bg-teal-100 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
+            className="hover:bg-button/50 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
           >
             <a href="#job-analysis">
-              <Briefcase className="text-teal-600" />
+              <Briefcase className="text-button-foreground" />
               <span>Job Analysis</span>
             </a>
           </SidebarMenuButton>
@@ -64,10 +64,10 @@ export function NavMain({
           <SidebarMenuButton
             asChild
             tooltip="Resume Snippets"
-            className="hover:bg-teal-100 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
+            className="hover:bg-button/50 data-[active=true]:bg-teal-200 data-[active=true]:text-teal-900"
           >
             <a href="#snippets">
-              <FileText className="text-teal-600" />
+              <FileText className="text-button-foreground" />
               <span>Resume Snippets</span>
             </a>
           </SidebarMenuButton>

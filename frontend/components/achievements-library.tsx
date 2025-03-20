@@ -71,10 +71,10 @@ export function AchievementsLibrary() {
             <div className="space-y-4">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                     <div className="relative flex-1">
-                        <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                        <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary-foreground" />
                         <Input
                             placeholder="Search achievements..."
-                            className="border-gray-300 pl-8 focus-visible:ring-teal-500"
+                            className="border-secondary-muted-foreground/65 pl-8 focus-visible:ring-teal-500"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
@@ -103,7 +103,7 @@ export function AchievementsLibrary() {
                                                 title: e.target.value,
                                             })
                                         }
-                                        className="border-gray-300 focus-visible:ring-teal-500"
+                                        className="border-secondary-muted-foreground/65 focus-visible:ring-secondary-highlight"
                                     />
                                 </div>
                                 <div className="grid gap-2">
@@ -118,7 +118,7 @@ export function AchievementsLibrary() {
                                                 description: e.target.value,
                                             })
                                         }
-                                        className="border-gray-300 focus-visible:ring-teal-500"
+                                        className="border-secondary-muted-foreground/65 focus-visible:ring-secondary-highlight"
                                     />
                                 </div>
                                 <div className="grid gap-2">
@@ -133,7 +133,7 @@ export function AchievementsLibrary() {
                                                 tags: e.target.value,
                                             })
                                         }
-                                        className="border-gray-300 focus-visible:ring-teal-500"
+                                        className="border-secondary-muted-foreground/65 focus-visible:ring-secondary-highlight"
                                     />
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ export function AchievementsLibrary() {
                                 <Button
                                     type="submit"
                                     onClick={handleAddAchievement}
-                                    className="bg-teal-600 text-white hover:bg-teal-700"
+                                    className="bg-button text-button-foreground hover:bg-button/50"
                                 >
                                     Add Achievement
                                 </Button>
@@ -152,7 +152,7 @@ export function AchievementsLibrary() {
 
                 <div className="rounded-md border">
                     <Table>
-                        <TableHeader className="bg-muted">
+                        <TableHeader className="bg-secondary-muted text-secondary-muted-foreground">
                             <TableRow>
                                 <TableHead className="w-[300px]">Achievement</TableHead>
                                 <TableHead>Description</TableHead>
@@ -163,7 +163,7 @@ export function AchievementsLibrary() {
                         <TableBody>
                             {filteredAchievements.length > 0 ? (
                                 filteredAchievements.map((achievement) => (
-                                    <TableRow key={achievement.id} className="hover:bg-gray-50">
+                                    <TableRow key={achievement.id} className="hover:bg-secondary-muted/25">
                                         <TableCell className="font-medium text-foreground">{achievement.title}</TableCell>
                                         <TableCell>{achievement.description}</TableCell>
                                         <TableCell>
@@ -182,7 +182,7 @@ export function AchievementsLibrary() {
                                                     variant="ghost"
                                                     size="icon"
                                                     aria-label="Edit achievement"
-                                                    className="text-gray-500 hover:bg-teal-50 hover:text-teal-700"
+                                                    className="text-secondary-muted-foreground hover:bg-chart-2/15 hover:text-chart-2"
                                                 >
                                                     <Edit className="h-4 w-4" />
                                                 </Button>

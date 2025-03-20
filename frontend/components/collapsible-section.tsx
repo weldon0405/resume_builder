@@ -19,8 +19,8 @@ export function CollapsibleSection({ title, icon, children, defaultOpen = true, 
     const [isOpen, setIsOpen] = useState(defaultOpen)
 
     return (
-        <Card id={id} className="w-full overflow-hidden border border-gray-200 shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between bg-secondary p-4 text-secondary-foreground">
+        <Card id={id} className="w-full overflow-hidden border border-secondary-muted-foreground/65 shadow-sm">
+            <CardHeader className="flex flex-row items-center justify-between bg-secondary-muted p-4 text-secondary-foreground">
                 <CardTitle className="flex items-center gap-2 text-xl font-medium">
                     {icon}
                     {title}
