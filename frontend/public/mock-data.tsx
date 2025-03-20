@@ -146,4 +146,26 @@ export const data = {
             icon: Bot,
         },
     ],
+    sampleAchievements: [
+        {
+            id: 1,
+            title: "Increased team productivity by 30%",
+            description:
+                "Implemented new project management system that streamlined workflows and improved team collaboration.",
+            tags: ["Leadership", "Project Management", "Productivity"],
+        },
+        {
+            id: 2,
+            title: "Reduced customer support response time by 50%",
+            description: "Developed and implemented a new ticketing system with automated routing and prioritization.",
+            tags: ["Customer Service", "Automation", "Process Improvement"],
+        },
+        {
+            id: 3,
+            title: "Led cross-functional team of 8 engineers",
+            description:
+                "Coordinated development efforts across frontend, backend, and QA teams to deliver product features on time.",
+            tags: ["Leadership", "Team Management", "Engineering"],
+        },
+    ],
 }

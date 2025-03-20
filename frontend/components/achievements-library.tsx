@@ -19,32 +19,12 @@ import {
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
-// Sample achievements data
-const sampleAchievements = [
-    {
-        id: 1,
-        title: "Increased team productivity by 30%",
-        description:
-            "Implemented new project management system that streamlined workflows and improved team collaboration.",
-        tags: ["Leadership", "Project Management", "Productivity"],
-    },
-    {
-        id: 2,
-        title: "Reduced customer support response time by 50%",
-        description: "Developed and implemented a new ticketing system with automated routing and prioritization.",
-        tags: ["Customer Service", "Automation", "Process Improvement"],
-    },
-    {
-        id: 3,
-        title: "Led cross-functional team of 8 engineers",
-        description:
-            "Coordinated development efforts across frontend, backend, and QA teams to deliver product features on time.",
-        tags: ["Leadership", "Team Management", "Engineering"],
-    },
-]
+
+import { data } from "@/public/mock-data"
+
 
 export function AchievementsLibrary() {
-    const [achievements, setAchievements] = useState(sampleAchievements)
+    const [achievements, setAchievements] = useState(data.sampleAchievements)
     const [searchTerm, setSearchTerm] = useState("")
     const [newAchievement, setNewAchievement] = useState({
         title: "",
@@ -101,7 +81,7 @@ export function AchievementsLibrary() {
                     </div>
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="bg-teal-600 text-white hover:bg-teal-700 w-full sm:w-auto">
+                            <Button className="bg-button text-button-foreground hover:bg-button/50 w-full sm:w-auto">
                                 <Plus className="mr-2 h-4 w-4" /> Add Achievement
                             </Button>
                         </DialogTrigger>
@@ -170,9 +150,9 @@ export function AchievementsLibrary() {
                     </Dialog>
                 </div>
 
-                <div className="rounded-md border border-gray-200">
+                <div className="rounded-md border">
                     <Table>
-                        <TableHeader className="bg-gray-50">
+                        <TableHeader className="bg-muted">
                             <TableRow>
                                 <TableHead className="w-[300px]">Achievement</TableHead>
                                 <TableHead>Description</TableHead>
@@ -184,12 +164,12 @@ export function AchievementsLibrary() {
                             {filteredAchievements.length > 0 ? (
                                 filteredAchievements.map((achievement) => (
                                     <TableRow key={achievement.id} className="hover:bg-gray-50">
-                                        <TableCell className="font-medium text-teal-900">{achievement.title}</TableCell>
+                                        <TableCell className="font-medium text-foreground">{achievement.title}</TableCell>
                                         <TableCell>{achievement.description}</TableCell>
                                         <TableCell>
                                             <div className="flex flex-wrap gap-1">
                                                 {achievement.tags.map((tag) => (
-                                                    <Badge key={tag} variant="outline" className="bg-teal-50 text-teal-700 border-teal-200">
+                                                    <Badge key={tag} variant="outline" className="bg-secondary text-secondary-foreground border-secondary-foreground">
                                                         <Tag className="mr-1 h-3 w-3" />
                                                         {tag}
                                                     </Badge>

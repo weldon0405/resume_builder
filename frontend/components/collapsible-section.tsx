@@ -20,7 +20,7 @@ export function CollapsibleSection({ title, icon, children, defaultOpen = true, 
 
     return (
         <Card id={id} className="w-full overflow-hidden border border-gray-200 shadow-sm">
-            <CardHeader className="flex flex-row items-center justify-between bg-gradient-to-r from-teal-600 to-teal-500 p-4 text-white">
+            <CardHeader className="flex flex-row items-center justify-between bg-secondary p-4 text-secondary-foreground">
                 <CardTitle className="flex items-center gap-2 text-xl font-medium">
                     {icon}
                     {title}
@@ -30,7 +30,7 @@ export function CollapsibleSection({ title, icon, children, defaultOpen = true, 
                     size="icon"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label={isOpen ? "Collapse section" : "Expand section"}
-                    className="text-white hover:bg-teal-700/50"
+                    className="hover:bg-primary/50"
                 >
                     {isOpen ? <ChevronUp /> : <ChevronDown />}
                 </Button>
