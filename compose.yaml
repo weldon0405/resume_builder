@@ -1,13 +1,13 @@
 services:
   db:
-    container_name: db
-    image: postgres:16
+    container_name: db_resume
+    image: postgres:16.8-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     ports:
-      - 5432:5432
+      - 5431:5432
     volumes:
       - template_postgres_data:/var/lib/postgresql/data
 
